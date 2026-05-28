@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "protocol": "world-outlook-v0.1",
+    "appName": "梦划奇点",
+    "appVersion": "0.x",
+    "exportedBy": "example"
+  },
+  "version": "1.9.0",
+  "exportedAt": "2026-05-28T00:00:00.000Z",
+  "world": {
+    "id": "world_demo",
+    "name": "示例世界",
+    "description": "一个最小化的协议示例。",
+    "genre": "奇幻",
+    "tags": ["示例", "协议"],
+    "featureSettings": {
+      "timeline": true,
+      "relations": true,
+      "map": false
+    },
+    "createdAt": "2026-05-28T00:00:00.000Z",
+    "updatedAt": "2026-05-28T00:00:00.000Z"
+  },
+  "modules": [
+    {
+      "id": "module_character",
+      "worldId": "world_demo",
+      "name": "角色",
+      "description": "人物、主角、配角与重要 NPC。",
+      "colorTone": "character",
+      "isSystem": true,
+      "sortOrder": 1,
+      "fields": [
+        { "id": "field_identity", "key": "identity", "label": "身份", "type": "text", "required": false, "order": 1 },
+        { "id": "field_birth", "key": "birth", "label": "出生时间", "type": "worldDate", "required": false, "order": 2, "timeline": true, "calendarRole": "birth" }
+      ],
+      "createdAt": "2026-05-28T00:00:00.000Z",
+      "updatedAt": "2026-05-28T00:00:00.000Z"
+    }
+  ],
+  "entries": [
+    {
+      "id": "entry_hero",
+      "worldId": "world_demo",
+      "moduleId": "module_character",
+      "title": "阿莱雅",
+      "summary": "边境城邦的年轻记录官。",
+      "notes": "她负责整理旧王朝留下的地图与誓约。",
+      "tags": ["主角"],
+      "fieldValues": {
+        "identity": "记录官"
+      },
+      "rolePosition": "main",
+      "createdAt": "2026-05-28T00:00:00.000Z",
+      "updatedAt": "2026-05-28T00:00:00.000Z"
+    }
+  ],
+  "relations": []
+}

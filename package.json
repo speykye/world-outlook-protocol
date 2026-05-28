@@ -1,0 +1,35 @@
+{
+  "name": "@world-outlook/protocol",
+  "version": "0.1.0",
+  "description": "Open protocol types, schemas and validators for World Outlook / 梦划奇点 export bundles.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "world-outlook-validate": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "docs",
+    "examples",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "validate:example": "node dist/cli.js examples/minimal-world.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "worldbuilding",
+    "protocol",
+    "world-outlook",
+    "dream-singularity",
+    "json-schema"
+  ]
+}

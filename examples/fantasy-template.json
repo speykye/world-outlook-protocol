@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "protocol": "world-outlook-v0.1",
+    "appName": "梦划奇点",
+    "appVersion": "0.x",
+    "exportedBy": "template"
+  },
+  "version": "1.9.0",
+  "exportedAt": "2026-05-28T00:00:00.000Z",
+  "world": {
+    "id": "world_fantasy_template",
+    "name": "奇幻世界模板",
+    "description": "用于测试协议兼容性的简化模板。",
+    "genre": "奇幻 / 跑团 / 长篇设定",
+    "tags": ["模板", "奇幻", "跑团"],
+    "featureSettings": {
+      "tags": true,
+      "collections": true,
+      "timeline": true,
+      "calendar": true,
+      "relations": true,
+      "map": true
+    },
+    "createdAt": "2026-05-28T00:00:00.000Z",
+    "updatedAt": "2026-05-28T00:00:00.000Z"
+  },
+  "modules": [
+    {
+      "id": "module_character",
+      "worldId": "world_fantasy_template",
+      "name": "角色",
+      "description": "主角、配角、NPC 与历史人物。",
+      "colorTone": "character",
+      "isSystem": true,
+      "sortOrder": 1,
+      "fields": [
+        { "id": "field_role", "key": "role", "label": "故事定位", "type": "singleSelect", "required": false, "options": ["主角", "配角", "反派", "NPC"], "order": 1, "filterable": true },
+        { "id": "field_affiliation", "key": "affiliation", "label": "所属势力", "type": "entryRef", "required": false, "order": 2, "allowedModuleIds": ["module_faction"], "referenceMode": "multiple" }
+      ],
+      "createdAt": "2026-05-28T00:00:00.000Z",
+      "updatedAt": "2026-05-28T00:00:00.000Z"
+    },
+    {
+      "id": "module_faction",
+      "worldId": "world_fantasy_template",
+      "name": "势力",
+      "description": "国家、组织、教团、商会与松散阵营。",
+      "colorTone": "faction",
+      "isSystem": true,
+      "sortOrder": 2,
+      "fields": [
+        { "id": "field_type", "key": "type", "label": "势力类型", "type": "singleSelect", "required": false, "options": ["国家", "城邦", "组织", "教团", "商会", "家族"], "order": 1, "filterable": true },
+        { "id": "field_goal", "key": "goal", "label": "核心目标", "type": "textarea", "required": false, "order": 2 }
+      ],
+      "createdAt": "2026-05-28T00:00:00.000Z",
+      "updatedAt": "2026-05-28T00:00:00.000Z"
+    },
+    {
+      "id": "module_location",
+      "worldId": "world_fantasy_template",
+      "name": "地点",
+      "description": "大陆、国家、城市、遗迹与重要场景。",
+      "colorTone": "location",
+      "isSystem": true,
+      "sortOrder": 3,
+      "fields": [
+        { "id": "field_region", "key": "region", "label": "所属区域", "type": "text", "required": false, "order": 1 },
+        { "id": "field_features", "key": "features", "label": "地理/氛围特征", "type": "textarea", "required": false, "order": 2 }
+      ],
+      "createdAt": "2026-05-28T00:00:00.000Z",
+      "updatedAt": "2026-05-28T00:00:00.000Z"
+    }
+  ],
+  "entries": [
+    {
+      "id": "entry_border_city",
+      "worldId": "world_fantasy_template",
+      "moduleId": "module_location",
+      "title": "灰港城",
+      "summary": "旧王国边境的海港城邦。",
+      "tags": ["城市", "边境"],
+      "fieldValues": { "region": "北境海岸", "features": "常年雾气、旧灯塔、佣兵行会。" },
+      "createdAt": "2026-05-28T00:00:00.000Z",
+      "updatedAt": "2026-05-28T00:00:00.000Z"
+    },
+    {
+      "id": "entry_archive_order",
+      "worldId": "world_fantasy_template",
+      "moduleId": "module_faction",
+      "title": "白鸦档案会",
+      "summary": "负责保管旧王国条约、地图和失落谱系的组织。",
+      "tags": ["组织", "档案"],
+      "fieldValues": { "type": "组织", "goal": "保护历史记录不被新王权篡改。" },
+      "createdAt": "2026-05-28T00:00:00.000Z",
+      "updatedAt": "2026-05-28T00:00:00.000Z"
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation_city_order",
+      "worldId": "world_fantasy_template",
+      "fromEntryId": "entry_archive_order",
+      "toEntryId": "entry_border_city",
+      "relationType": "驻扎于",
+      "relationTypeCategory": "location",
+      "note": "档案会在灰港城旧灯塔下拥有密室。",
+      "createdAt": "2026-05-28T00:00:00.000Z"
+    }
+  ]
+}

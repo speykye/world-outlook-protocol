@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://world-outlook-protocol.local/schemas/world-export-bundle.schema.json",
+  "title": "World Outlook Export Bundle",
+  "description": "Draft schema for World Outlook / 梦划奇点 export bundles. This schema intentionally validates the public exchange shape, not the full private application database.",
+  "type": "object",
+  "required": ["version", "exportedAt", "world", "modules", "entries", "relations"],
+  "additionalProperties": true,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "protocol": { "const": "world-outlook-v0.1" },
+        "appName": { "type": "string" },
+        "appVersion": { "type": "string" },
+        "exportedBy": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "version": {
+      "type": "string",
+      "enum": ["1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.8.0", "1.9.0"]
+    },
+    "exportedAt": { "type": "string" },
+    "world": { "$ref": "#/$defs/world" },
+    "modules": { "type": "array", "items": { "$ref": "#/$defs/module" } },
+    "entries": { "type": "array", "items": { "$ref": "#/$defs/entry" } },
+    "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+    "calendarSystems": { "type": "array", "items": { "type": "object" } },
+    "calendarRegimes": { "type": "array", "items": { "type": "object" } },
+    "calendarHolidays": { "type": "array", "items": { "type": "object" } },
+    "eras": { "type": "array", "items": { "type": "object" } },
+    "temporalIndexes": { "type": "array", "items": { "type": "object" } },
+    "maps": { "type": "array", "items": { "type": "object" } },
+    "mapLayers": { "type": "array", "items": { "type": "object" } },
+    "mapFeatures": { "type": "array", "items": { "type": "object" } },
+    "mapAssets": { "type": "array", "items": { "type": "object" } },
+    "wikiEntries": { "type": "array", "items": { "type": "object" } },
+    "wikiFragments": { "type": "array", "items": { "type": "object" } },
+    "settingMaterials": { "type": "array", "items": { "type": "object" } },
+    "writingContextPacks": { "type": "array", "items": { "type": "object" } },
+    "treeNodes": { "type": "array", "items": { "type": "object" } }
+  },
+  "$defs": {
+    "world": {
+      "type": "object",
+      "required": ["id", "name", "description", "tags", "createdAt", "updatedAt"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "genre": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "featureSettings": { "type": "object", "additionalProperties": { "type": "boolean" } },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "module": {
+      "type": "object",
+      "required": ["id", "worldId", "name", "isSystem", "fields", "createdAt", "updatedAt"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "worldId": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "colorTone": { "type": "string" },
+        "icon": { "type": "string" },
+        "isSystem": { "type": "boolean" },
+        "groupName": { "type": "string" },
+        "sortOrder": { "type": "number" },
+        "fields": { "type": "array", "items": { "$ref": "#/$defs/moduleField" } },
+        "capabilities": { "type": "object", "additionalProperties": true },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "moduleField": {
+      "type": "object",
+      "required": ["id", "key", "label", "type", "required", "order"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "type": { "type": "string" },
+        "required": { "type": "boolean" },
+        "placeholder": { "type": "string" },
+        "groupName": { "type": "string" },
+        "advanced": { "type": "boolean" },
+        "options": { "type": "array", "items": { "type": "string" } },
+        "order": { "type": "number" },
+        "timeline": { "type": "boolean" },
+        "allowedModuleIds": { "type": "array", "items": { "type": "string" } },
+        "referenceMode": { "enum": ["single", "multiple"] }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "required": ["id", "worldId", "moduleId", "title", "tags", "fieldValues", "createdAt", "updatedAt"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "worldId": { "type": "string" },
+        "moduleId": { "type": "string" },
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "notes": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "fieldValues": { "type": "object", "additionalProperties": true },
+        "isFavorite": { "type": "boolean" },
+        "timelineImportance": { "type": "string" },
+        "rolePosition": { "type": "string" },
+        "eraIds": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "required": ["id", "worldId", "fromEntryId", "toEntryId", "relationType", "createdAt"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "worldId": { "type": "string" },
+        "fromEntryId": { "type": "string" },
+        "toEntryId": { "type": "string" },
+        "relationType": { "type": "string" },
+        "relationTypeCategory": { "type": "string" },
+        "fromRoleLabel": { "type": "string" },
+        "toRoleLabel": { "type": "string" },
+        "roleName": { "type": "string" },
+        "termStatus": { "type": "string" },
+        "termStartText": { "type": "string" },
+        "termEndText": { "type": "string" },
+        "note": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    }
+  }
+}
