@@ -16,7 +16,11 @@
     "examples",
     "README.md",
     "LICENSE",
-    "NOTICE"
+    "NOTICE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",

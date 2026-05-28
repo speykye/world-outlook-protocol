@@ -49,6 +49,18 @@ world-outlook-validate ./my-world.json
 
 The validator checks the minimum protocol shape and common reference integrity problems, such as entries pointing to missing modules or relations pointing to missing entries.
 
+## Governance files
+
+This repository includes basic open-source governance files:
+
+- `CONTRIBUTING.md` explains accepted contribution scope.
+- `SECURITY.md` explains how to report sensitive issues and avoid exposing private worldbuilding data.
+- `CODE_OF_CONDUCT.md` defines basic participation expectations.
+- `CHANGELOG.md` records protocol changes.
+- `.github/ISSUE_TEMPLATE/*` keeps issues focused on protocol-layer work.
+- `.github/workflows/validate.yml` builds the package and validates examples on GitHub Actions.
+
+
 ## Public boundary
 
 Open now:
