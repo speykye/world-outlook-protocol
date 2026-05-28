@@ -1,0 +1,48 @@
+name: Protocol suggestion
+description: Suggest a protocol shape, compatibility, or migration improvement.
+title: "[Proposal]: "
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository tracks the public protocol layer only. Application UI features, full product requests, and private workflow customization may be redirected or closed.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What creator or interoperability problem does this proposal solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed protocol change
+      description: Describe the fields, schema, or validation behavior you propose.
+    validations:
+      required: true
+  - type: textarea
+    id: generality
+    attributes:
+      label: Why this belongs in the public protocol
+      description: Explain why this is broadly useful across genres, settings, and workflows.
+    validations:
+      required: true
+  - type: dropdown
+    id: compatibility
+    attributes:
+      label: Compatibility impact
+      options:
+        - No breaking change
+        - Backward-compatible addition
+        - Potentially breaking change
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: migration
+    attributes:
+      label: Migration notes
+      description: If this changes existing shapes, how should old bundles be handled?
+    validations:
+      required: false

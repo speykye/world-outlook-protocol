@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a protocol, schema, validator, or example bug.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not attach private worldbuilding exports or unpublished creative materials. Use a minimal synthetic example.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - TypeScript types
+        - JSON Schema
+        - Validator CLI
+        - Example bundle
+        - Documentation
+        - Other protocol-layer issue
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Provide a synthetic minimal example or steps to reproduce.
+      render: json
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Protocol/package version
+      placeholder: "0.1.0-alpha.1"
+    validations:
+      required: false
